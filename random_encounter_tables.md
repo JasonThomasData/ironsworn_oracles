@@ -13,7 +13,7 @@ Roll d100 and add your total experience. If you roll out of table range, roll ag
 Roll+Exp | Foe | Type | Rank
 --- | --- | --- | ---
 1-9 | Common Folk | Ironlander | Troublesome
-10-26 | Marsh Rrat   | Animal | Troublesome
+10-26 | Marsh Rat | Animal | Troublesome
 27-62 | Raider | Ironlander | Dangerous
 63-65 | Mystic | Ironlander | Dangerous
 66-68 | Warrior | Ironlander | Dangerous
@@ -21,9 +21,8 @@ Roll+Exp | Foe | Type | Rank
 72-86 | Sodden | Horror | Formidable
 87-89 | Haunt | Horror | Formidable
 90-98 | Tawny Wyvern | Beast | Extreme
-99-107 | Sea Primordial | Firstborn | Extreme
-108-110 | Iron Revenant | Horror | Extreme
-111-113 | Chimera | Horror | Extreme
-114-118 | Leviathan | Beast | Epic
-
+99-106 | Sea Primordial | Firstborn | Extreme
+107-109 | Iron Revenant | Horror | Extreme
+110-112 | Chimera | Horror | Extreme
+113-117 | Leviathan | Beast | Epic
 
