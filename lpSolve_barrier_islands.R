@@ -36,12 +36,12 @@ add.constraint(lp_model, c(0,0,0,0,0,0,0,0,1,0,0,0,1), "<=", 0.1)
 add.constraint(lp_model, c(0,0,0,0,0,1,1,1,0,0,1,1,0), "<=", 0.2)
 
 # Region          | Troublesome | Dangerous | Formidable | Extreme | Epic
-# Barrier Islands | 0.2         | 0.35      | 0.25       | 0.15    | 0.05
+# Barrier Islands | 0.2         | 0.35      | 0.25       | 0.18    | 0.03
 add.constraint(lp_model, c(1,1,0,0,0,0,0,0,0,0,0,0,0), "<=", 0.2)
 add.constraint(lp_model, c(0,0,1,1,1,1,0,0,0,0,0,0,0), "<=", 0.35)
 add.constraint(lp_model, c(0,0,0,0,0,0,1,1,0,0,0,0,0), "<=", 0.25)
-add.constraint(lp_model, c(0,0,0,0,0,0,0,0,1,1,1,1,0), "<=", 0.15)
-add.constraint(lp_model, c(0,0,0,0,0,0,0,0,0,0,0,0,1), "<=", 0.05)
+add.constraint(lp_model, c(0,0,0,0,0,0,0,0,1,1,1,1,0), "<=", 0.18)
+add.constraint(lp_model, c(0,0,0,0,0,0,0,0,0,0,0,0,1), "<=", 0.03)
 
 # All creatures have a minimum 2% chance
 add.constraint(lp_model, c(1,0,0,0,0,0,0,0,0,0,0,0,0), ">", 0.02)
@@ -61,6 +61,8 @@ add.constraint(lp_model, c(0,0,0,0,0,0,0,0,0,0,0,0,1), ">", 0.02)
 solve(lp_model)
 
 probabilities=get.variables(lp_model)
+print(probabilities)
+
 tableRange=120
 minimumRoll=1
 
