@@ -43,6 +43,6 @@ Roll+Exp | Foe | Type | Rank
 91-103 | Tawny Wyvern | Beast | Extreme
 104-111 | Sea Primordial | Firstborn | Extreme
 112-114 | Chimera | Horror | Extreme
-115-117 Iron Revenant | Horror | Extreme
+115-117 | Iron Revenant | Horror | Extreme
 
 
