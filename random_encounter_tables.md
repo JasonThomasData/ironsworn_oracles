@@ -26,3 +26,23 @@ Roll+Exp | Foe | Type | Rank
 110-112 | Chimera | Horror | Extreme
 113-117 | Leviathan | Beast | Epic
 
+### Ragged Coast 
+
+Roll+Exp | Foe | Type | Rank
+--- | --- | --- | ---
+1-23 | Broken | Ironlander | Troublesome
+24-26 | Common folk | Ironlander | Troublesome
+27-40 | Raider | Ironlander | Dangerous
+41-60 | Wolf | Animal | Dangerous
+61-63 | Boar | Animal | Dangerous
+64-66 | Mystic | Ironlander | Dangerous
+67-69 | Warrior | Ironlander | Dangerous
+70-72 | Bonewalker | Horror | Dangerous
+73-87 | Sodden | Horror | Formidable
+88-90 | Haunt | Horror | Formidable
+91-103 | Tawny Wyvern | Beast | Extreme
+104-111 | Sea Primordial | Firstborn | Extreme
+112-114 | Chimera | Horror | Extreme
+115-117 Iron Revenant | Horror | Extreme
+
+
