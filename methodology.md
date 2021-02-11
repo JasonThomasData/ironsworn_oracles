@@ -12,8 +12,8 @@
 
 Region | Troublesome | Dangerous | Formidable | Extreme | Epic | Total
 --- | --- | --- | --- | --- | --- | ---
-Global | 0.2 | 0.35 | 0.25 | 0.18 | 0.03 | 1
-Barrier Islands | 0.2 | 0.35 | 0.25 | 0.18 | 0.03 | 1
+Global | 0.2 | 0.35 | 0.25 | 0.17 | 0.03 | 1
+Barrier Islands | 0.2 | 0.35 | 0.25 | 0.17 | 0.03 | 1
 Ragged Coast | 0.2 | 0.35 | 0.25 | 0.2 | 0 | 1
 Deep Wilds | 0.2 | 0.35 | 0.25 | 0.2 | 0 | 1
 Flooded Lands | 0.2 | 0.35 | 0.25 | 0.2 | 0 | 1
