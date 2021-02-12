@@ -10,7 +10,7 @@ Change the [foe_rank_probabilities](foe_rank_probabilities.csv) table. Each regi
 
 ### I want to change the foes that appear in a particular region
 
-Change the relevant \*\_foes.csv table for that region. Take care that easy enemies should appear higher and within ranks/types, common enemies appear higher. Enemies that appear lower in the tables are treated as less likely.
+Change the relevant \*\_foes.csv table for that region. Take care that easy enemies should appear higher and within ranks/types, common enemies appear higher.
 
 ### I want a low fantasy game with only animals and humans 
 

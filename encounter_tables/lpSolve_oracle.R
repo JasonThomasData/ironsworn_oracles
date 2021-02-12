@@ -105,7 +105,7 @@ for(i in 1:numberOfFoes) {
 solve(lp_model)
 
 probabilities=get.variables(lp_model)
-writeLines("probabilities based on ordered list of foes")
+writeLines("Probabilities based on ordered list of foes:")
 print(probabilities)
 
 minimumRoll=1
@@ -113,7 +113,6 @@ rolls = c()
 
 for(probability in probabilities) {
     roll=probability*rollScale
-    print(rollScale)
     roundedRoll=round(roll, digits=0)
     maxRoll=minimumRoll+roundedRoll
     rollRangeForFoe=sprintf("%i-%i", minimumRoll, maxRoll)
