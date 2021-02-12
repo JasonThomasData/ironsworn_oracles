@@ -1,10 +1,12 @@
 Foe,Type,Rank
 Common Folk,Ironlander,Troublesome
 Marsh Rat,Animal,Troublesome
-Raider,Ironlander,Dangerous
 Mystic,Ironlander,Dangerous
 Warrior,Ironlander,Dangerous
+Raider,Ironlander,Dangerous
 Bonewalker,Horror,Dangerous
+Mischief of Marsh Rats,Animal,Dangerous
+Band of Raiders,Ironlander,Formidable
 Sodden,Horror,Formidable
 Haunt,Horror,Formidable
 Tawny Wyvern,Beast,Extreme

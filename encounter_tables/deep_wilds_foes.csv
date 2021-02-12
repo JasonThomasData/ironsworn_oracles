@@ -1,18 +1,17 @@
 Foe,Type,Rank
 Marsh Rat,Animal,Troublesome
-Broken,Ironlander,Troublesome
-Common folk,Ironlander,Troublesome
 Hunter,Ironlander,Dangerous
 Elf,Firstborn,Dangerous
 Varou,Firstborn,Dangerous
 Gaunt,Animal,Dangerous
 Harrow Spider,Beast,Dangerous
-Group of Hunters,Ironlander,Formidable
-Group of Elves,Firstborn,Formidable
+Mystic,Ironlander,Dangerous
 Ash Bear,Animal,Formidable
-Haunt,Horror,Formidable
-Troll,Firstborn,Formidable
+Warband of Elves,Firstborn,Formidable
+Several Harrow Spiders,Beast,Formidable
 Hollow,Horror,Extreme
 Elder Beast,Beast,Extreme
-Forest Primordial,Firstborn,Extreme
+Forest primordial,Firstborn,Extreme
 Verdant Wyvern,Beast,Extreme
+Chimera,Horror,Extreme
+Iron Revenant,Horror,Extreme

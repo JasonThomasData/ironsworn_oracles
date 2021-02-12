@@ -6,6 +6,7 @@ Warrior,Ironlander,Dangerous
 Wolf,Animal,Dangerous
 Haunt,Horror,Formidable
 Pack of wolves,Animal,Formidable
+Band of Raiders,Ironlander,Formidable
 Giant,Firstborn,Extreme
 Elder Beast,Beast,Extreme
 Iron Wyvern,Beast,Extreme
@@ -13,3 +14,4 @@ Mammoth,Beast,Extreme
 Mountain Primordial,Firstborn,Extreme
 Iron Revenant,Horror,Extreme
 Chimera,Horror,Extreme
+Trio of Enraged Mammoths,Beast,Epic
