@@ -1,6 +1,6 @@
 ### I want to play in a low fantasy world with only humans and animals
 
-Change the [foe type probabilities](foe_type_probabilities.csv) table and set that foe type to 0.
+Change the [foe type probabilities](foe_type_probabilities.csv) table and set horrors/beasts/firstborn types to 0.
 
 ### I think there should be more humans in the Havens
 
