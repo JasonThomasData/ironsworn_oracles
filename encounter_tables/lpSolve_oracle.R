@@ -50,6 +50,7 @@ if(argv$rollScale < 100) {
     print(parser)
     return (1)
 }
+rollScale = argv$rollScale
 foeData = read.csv(argv$input)
 outputFileName = argv$output
 
@@ -107,13 +108,12 @@ probabilities=get.variables(lp_model)
 writeLines("probabilities based on ordered list of foes")
 print(probabilities)
 
-tableRange=120
 minimumRoll=1
 rolls = c()
-newTableWithRolls = data.frame()
 
 for(probability in probabilities) {
-    roll=probability*tableRange
+    roll=probability*rollScale
+    print(rollScale)
     roundedRoll=round(roll, digits=0)
     maxRoll=minimumRoll+roundedRoll
     rollRangeForFoe=sprintf("%i-%i", minimumRoll, maxRoll)

@@ -1,14 +1,15 @@
 Foe,Type,Rank
-Common Folk,Ironlander,Troublesome
-Marsh Rat,Animal,Troublesome
+Broken,Ironlander,Troublesome
+Common folk,Ironlander,Troublesome
 Raider,Ironlander,Dangerous
 Mystic,Ironlander,Dangerous
 Warrior,Ironlander,Dangerous
+Wolf,Animal,Dangerous
+Boar,Animal,Dangerous
 Bonewalker,Horror,Dangerous
 Sodden,Horror,Formidable
 Haunt,Horror,Formidable
-Tawny Wyvern,Beast,Extreme
 Sea Primordial,Firstborn,Extreme
+Tawny Wyvern,Beast,Extreme
 Iron Revenant,Horror,Extreme
 Chimera,Horror,Extreme
-Leviathan,Beast,Epic
