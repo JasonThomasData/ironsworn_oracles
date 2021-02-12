@@ -94,8 +94,8 @@ Chimera | Horror | Extreme
 
 
 – Deep wilds
-x |Foe | Type | Rank
----|--- | --- | --- | ---
+x | Foe | Type | Rank
+--- | --- | --- | ---
 0.05 | Broken | Ironlander | Troublesome, cluttered rank, remove
 0.15 | Marsh Rat | Animal | Troublesome
 0.1 | Hunters | Ironlander | Dangerous
