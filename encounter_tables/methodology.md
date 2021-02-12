@@ -10,9 +10,9 @@
 
 - Defined these probability tables:
 
-    - [Foe rank probabilities](foe_rank_probabilities.md)
+    - [Foe rank probabilities](foe_rank_probabilities.csv)
 
-    - [Foe type probabilities](foe_type_probabilities.md)
+    - [Foe type probabilities](foe_type_probabilities.csv)
 
 - Used Rscript and lpSolveAPI to solve the optimimum probability for encountering each foe.
 
