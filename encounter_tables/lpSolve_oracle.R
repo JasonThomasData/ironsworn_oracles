@@ -42,6 +42,57 @@ removeFoesIfProbabilityIsTooLow = function(probabilityTable, foeData, toRemoveFr
     (foeData)
 }
 
+addTypeConstraints = function(lpModel, foeData, foeTypeProbababilitiesForRegion) {
+    ironlanderCoefficients = getCoefficientsForValueInColumn(foeData, "Ironlander", "Type") 
+    firstbornCoefficients = getCoefficientsForValueInColumn(foeData, "Firstborn", "Type") 
+    animalCoefficients = getCoefficientsForValueInColumn(foeData, "Animal", "Type") 
+    beastCoefficients = getCoefficientsForValueInColumn(foeData, "Beast", "Type")
+    horrorCoefficients = getCoefficientsForValueInColumn(foeData, "Horror", "Type")
+    add.constraint(lpModel, ironlanderCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Ironlander"])
+    add.constraint(lpModel, firstbornCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Firstborn"])
+    add.constraint(lpModel, animalCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Animal"])
+    add.constraint(lpModel, beastCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Beast"])
+    add.constraint(lpModel, horrorCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Horror"])
+}
+
+addRankConstraints = function(lpModel, foeData, foeRankProbababilitiesForRegion) {
+    troublesomeCoefficients = getCoefficientsForValueInColumn(foeData, "Troublesome", "Rank") 
+    dangerousCoefficients = getCoefficientsForValueInColumn(foeData, "Dangerous", "Rank") 
+    formidableCoefficients = getCoefficientsForValueInColumn(foeData, "Formidable", "Rank") 
+    extremeCoefficients = getCoefficientsForValueInColumn(foeData, "Extreme", "Rank")
+    epicCoefficients = getCoefficientsForValueInColumn(foeData, "Epic", "Rank")
+    add.constraint(lpModel, troublesomeCoefficients, "<=", foeRankProbababilitiesForRegion[, "Troublesome"])
+    add.constraint(lpModel, dangerousCoefficients, "<=", foeRankProbababilitiesForRegion[, "Dangerous"])
+    add.constraint(lpModel, formidableCoefficients, "<=", foeRankProbababilitiesForRegion[, "Formidable"])
+    add.constraint(lpModel, extremeCoefficients, "<=", foeRankProbababilitiesForRegion[, "Extreme"])
+    add.constraint(lpModel, epicCoefficients, "<=", foeRankProbababilitiesForRegion[, "Epic"])
+}
+
+
+updateFoeDataWithDiceRolls = function(probababilities, rollScale) {
+    minimumRoll=1
+    rolls = c()
+    for(probability in probabilities) {
+        roll=probability*rollScale
+        roundedRoll=round(roll, digits=0)
+        maxRoll=minimumRoll+roundedRoll
+        rollRangeForFoe=sprintf("%i-%i", minimumRoll, maxRoll)
+        minimumRoll=maxRoll+1
+        rolls = append(rolls, rollRangeForFoe)
+    }
+    foeData$Rolls <- rolls
+    foeData = foeData[,c(4,1,2,3)]
+    (foeData)
+}
+
+addConstraintForMinimumFoeProbability = function(lpModel, numberOfFoes, minProb) {
+    for(i in 1:numberOfFoes) {
+        constraintDummy = rep(0, numberOfFoes)
+        constraintDummy[i] = 1
+        add.constraint(lpModel, constraintDummy, ">", minProb)
+    }
+}
+
 parser = arg_parser("Generate enemy encounter oracles for Ironsworn by region")
 parser = add_argument(parser, "--region", help="The region to generate the encounter table for", type="character")
 parser = add_argument(parser, "--input", help="The file for foes found within the region", type="character")
@@ -75,71 +126,40 @@ foeTypeProbababilities = read.csv("foe_type_probabilities.csv")
 foeRankProbababilities = read.csv("foe_rank_probabilities.csv")
 
 foeTypeProbababilitiesForRegion = getProbabilitiesForThisRegion(foeTypeProbababilities, region)
+writeLines("Using foe types:")
+print(foeTypeProbababilitiesForRegion)
 foeRankProbababilitiesForRegion = getProbabilitiesForThisRegion(foeRankProbababilities, region)
+writeLines("Using foe ranks:")
+print(foeRankProbababilitiesForRegion)
 
 foeData = removeFoesIfProbabilityIsTooLow(foeTypeProbababilitiesForRegion, foeData, "Type", minProb)
 foeData = removeFoesIfProbabilityIsTooLow(foeRankProbababilitiesForRegion, foeData, "Rank", minProb)
 
-writeLines("Using foe types:")
-print(foeTypeProbababilitiesForRegion)
-writeLines("Using foe ranks:")
-print(foeRankProbababilitiesForRegion)
-
 numberOfFoes = length(foeData[,"Foe"])
-objective_coefficients = rep(1, numberOfFoes) #One for each foe
-lp_model = make.lp(0, numberOfFoes)
-lp.control(lp_model, sense="max")
-set.objfn(lp_model, objective_coefficients)
 
-ironlanderCoefficients = getCoefficientsForValueInColumn(foeData, "Ironlander", "Type") 
-firstbornCoefficients = getCoefficientsForValueInColumn(foeData, "Firstborn", "Type") 
-animalCoefficients = getCoefficientsForValueInColumn(foeData, "Animal", "Type") 
-beastCoefficients = getCoefficientsForValueInColumn(foeData, "Beast", "Type")
-horrorCoefficients = getCoefficientsForValueInColumn(foeData, "Horror", "Type")
-add.constraint(lp_model, ironlanderCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Ironlander"])
-add.constraint(lp_model, firstbornCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Firstborn"])
-add.constraint(lp_model, animalCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Animal"])
-add.constraint(lp_model, beastCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Beast"])
-add.constraint(lp_model, horrorCoefficients, "<=", foeTypeProbababilitiesForRegion[, "Horror"])
+objectiveCoefficients = rep(1, numberOfFoes) #One for each foe
+lpModel = make.lp(0, numberOfFoes)
+lp.control(lpModel, sense="max")
+set.objfn(lpModel, objectiveCoefficients)
 
-troublesomeCoefficients = getCoefficientsForValueInColumn(foeData, "Troublesome", "Rank") 
-dangerousCoefficients = getCoefficientsForValueInColumn(foeData, "Dangerous", "Rank") 
-formidableCoefficients = getCoefficientsForValueInColumn(foeData, "Formidable", "Rank") 
-extremeCoefficients = getCoefficientsForValueInColumn(foeData, "Extreme", "Rank")
-epicCoefficients = getCoefficientsForValueInColumn(foeData, "Epic", "Rank")
-add.constraint(lp_model, troublesomeCoefficients, "<=", foeRankProbababilitiesForRegion[, "Troublesome"])
-add.constraint(lp_model, dangerousCoefficients, "<=", foeRankProbababilitiesForRegion[, "Dangerous"])
-add.constraint(lp_model, formidableCoefficients, "<=", foeRankProbababilitiesForRegion[, "Formidable"])
-add.constraint(lp_model, extremeCoefficients, "<=", foeRankProbababilitiesForRegion[, "Extreme"])
-add.constraint(lp_model, epicCoefficients, "<=", foeRankProbababilitiesForRegion[, "Epic"])
+addTypeConstraints(lpModel, foeData, foeTypeProbababilitiesForRegion)
+addRankConstraints(lpModel, foeData, foeRankProbababilitiesForRegion)
 
-for(i in 1:numberOfFoes) {
-    constraint_dummy = rep(0, numberOfFoes)
-    constraint_dummy[i] = 1
-    add.constraint(lp_model, constraint_dummy, ">", minProb)
+addConstraintForMinimumFoeProbability(lpModel, numberOfFoes, minProb)
+
+solve(lpModel)
+
+probabilities=get.variables(lpModel)
+if(sum(probabilities) != 1) {
+    print("These probabilities do not equal 1. This could be optimised further")
 }
 
-solve(lp_model)
-
-probabilities=get.variables(lp_model)
 writeLines("Probabilities based on ordered list of foes:")
 print(probabilities)
 
-minimumRoll=1
-rolls = c()
+foeData = updateFoeDataWithDiceRolls(probababilities, rollScale)
 
-for(probability in probabilities) {
-    roll=probability*rollScale
-    roundedRoll=round(roll, digits=0)
-    maxRoll=minimumRoll+roundedRoll
-    rollRangeForFoe=sprintf("%i-%i", minimumRoll, maxRoll)
-    minimumRoll=maxRoll+1
-    rolls = append(rolls, rollRangeForFoe)
-}
-foeData$Rolls <- rolls
-
-foeData = foeData[,c(4,1,2,3)]
-write.csv(foeData, outputFileName, row.names=F)
+write.csv(foeData, outputFileName, row.names=FALSE)
 
 writeLines("Result:")
 print(foeData)

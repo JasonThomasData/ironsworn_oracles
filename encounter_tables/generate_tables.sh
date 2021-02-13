@@ -7,6 +7,6 @@
 ./lpSolve_oracle.R --input foes/havens_foes.csv --region "Havens" --output oracles/havens_oracle.csv --minProb 0.01 --rollScale 105
 ./lpSolve_oracle.R --input foes/hinterlands_foes.csv --region "Hinterlands" --output oracles/hinterlands_oracle.csv --rollScale 105
 ./lpSolve_oracle.R --input foes/tempest_hills_foes.csv --region "Tempest Hills" --output oracles/tempest_hills_oracle.csv --rollScale 117
-./lpSolve_oracle.R --input foes/veiled_mountains_foes.csv --region "Veiled Mountains" --output oracles/vieled_mountains_oracle.csv --rollScale 125
+./lpSolve_oracle.R --input foes/veiled_mountains_foes.csv --region "Veiled Mountains" --output oracles/veiled_mountains_oracle.csv --rollScale 125
 ./lpSolve_oracle.R --input foes/shattered_wastes_foes.csv --region "Shattered Wastes" --output oracles/shattered_wastes_oracle.csv
 
