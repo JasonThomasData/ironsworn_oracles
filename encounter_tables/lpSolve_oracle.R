@@ -28,6 +28,21 @@ getProbabilitiesForThisRegion = function(probababilities, region) {
     (probababilities[probababilities$Region==region,])
 }
 
+removeFoesIfProbabilityIsTooLow = function(probabilityTable, foeData, toRemoveFromFoeData, minProb) {
+    for(probabilityColumnName in colnames(probabilityTable)) {
+        rowData = probabilityTable[,probabilityColumnName]
+        if(!is.numeric(rowData)) {
+            next
+        }
+        probability = rowData
+        if(probability < minProb || probability == 0) {
+            print(probabilityColumnName)
+            foeData = foeData[foeData[,toRemoveFromFoeData] != probabilityColumnName,]
+        }
+    }
+    (foeData)
+}
+
 parser = arg_parser("Generate enemy encounter oracles for Ironsworn by region")
 parser = add_argument(parser, "--region", help="The region to generate the encounter table for", type="character")
 parser = add_argument(parser, "--input", help="The file for foes found within the region", type="character")
@@ -51,9 +66,9 @@ if(argv$rollScale < 100) {
     return (1)
 }
 rollScale = argv$rollScale
-foeData = read.csv(argv$input)
 outputFileName = argv$output
 
+foeData = read.csv(argv$input)
 writeLines("Using foe data for this region:")
 print(foeData)
 
@@ -62,6 +77,9 @@ foeRankProbababilities = read.csv("foe_rank_probabilities.csv")
 
 foeTypeProbababilitiesForRegion = getProbabilitiesForThisRegion(foeTypeProbababilities, region)
 foeRankProbababilitiesForRegion = getProbabilitiesForThisRegion(foeRankProbababilities, region)
+
+foeData = removeFoesIfProbabilityIsTooLow(foeTypeProbababilitiesForRegion, foeData, "Type", minProb)
+foeData = removeFoesIfProbabilityIsTooLow(foeRankProbababilitiesForRegion, foeData, "Rank", minProb)
 
 writeLines("Using foe types:")
 print(foeTypeProbababilitiesForRegion)
