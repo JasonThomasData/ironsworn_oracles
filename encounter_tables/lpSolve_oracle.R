@@ -93,28 +93,33 @@ addConstraintForMinimumFoeProbability = function(lpModel, numberOfFoes, minProb)
     }
 }
 
-parser = arg_parser("Generate enemy encounter oracles for Ironsworn by region")
-parser = add_argument(parser, "--region", help="The region to generate the encounter table for", type="character")
-parser = add_argument(parser, "--input", help="The file for foes found within the region", type="character")
-parser = add_argument(parser, "--output", help="The same file, with dice rolls prepended", type="character")
-parser = add_argument(parser, "--minProb", help="The minimum probability that a creature will appear in the output oracle, if it's present in the csv of enemies. Valid between 0,1", default=0.02)
-parser = add_argument(parser, "--rollScale", help="The absolute maximum valid roll, which should be above 100, so that a character with no experience should never meet Epic foes.", default=120)
-argv = parse_args(parser)
-regions = c("Barrier Islands", "Ragged Coast", "Deep Wilds", "Flooded Lands", "Havens", "Hinterlands", "Tempest Hills", "Veiled Mountains", "Shattered Wastes")
-if(!is.element(argv$region, regions)) {
-    print(parser)
-    return (1)
+getTerminalArgs = function() {
+    parser = arg_parser("Generate enemy encounter oracles for Ironsworn by region")
+    parser = add_argument(parser, "--region", help="The region to generate the encounter table for", type="character")
+    parser = add_argument(parser, "--input", help="The file for foes found within the region", type="character")
+    parser = add_argument(parser, "--output", help="The same file, with dice rolls prepended", type="character")
+    parser = add_argument(parser, "--minProb", help="The minimum probability that a creature will appear in the output oracle, if it's present in the csv of enemies. Valid between 0,1", default=0.02)
+    parser = add_argument(parser, "--rollScale", help="The absolute maximum valid roll, which should be above 100, so that a character with no experience should never meet Epic foes.", default=120)
+    argv = parse_args(parser)
+    regions = c("Barrier Islands", "Ragged Coast", "Deep Wilds", "Flooded Lands", "Havens", "Hinterlands", "Tempest Hills", "Veiled Mountains", "Shattered Wastes")
+    if(!is.element(argv$region, regions)) {
+        print(parser)
+        return (1)
+    }
+    if(argv$minProb < 0 || argv$minProb > 1) {
+        print(parser)
+        return (1)
+    }
+    if(argv$rollScale < 100) {
+        print(parser)
+        return (1)
+    }
+    (argv)
 }
+
+argv = getTerminalArgs()
 region = argv$region
-if(argv$minProb < 0 || argv$minProb > 1) {
-    print(parser)
-    return (1)
-}
 minProb = argv$minProb
-if(argv$rollScale < 100) {
-    print(parser)
-    return (1)
-}
 rollScale = argv$rollScale
 outputFileName = argv$output
 
@@ -137,9 +142,9 @@ foeData = removeFoesIfProbabilityIsTooLow(foeRankProbababilitiesForRegion, foeDa
 
 numberOfFoes = length(foeData[,"Foe"])
 
-objectiveCoefficients = rep(1, numberOfFoes) #One for each foe
 lpModel = make.lp(0, numberOfFoes)
 lp.control(lpModel, sense="max")
+objectiveCoefficients = rep(1, numberOfFoes) #One for each foe
 set.objfn(lpModel, objectiveCoefficients)
 
 addTypeConstraints(lpModel, foeData, foeTypeProbababilitiesForRegion)
