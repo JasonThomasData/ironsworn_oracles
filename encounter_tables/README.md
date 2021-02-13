@@ -21,4 +21,17 @@ Roll d100 and add your total experience. If you roll out of table range, roll ag
 
 - [Ragged Coast](oracles/ragged_coast_oracle.csv)
 
+- [Deep Wilds](oracles/deep_wilds_oracle.csv)
+
+- [Flooded Lands](oracles/flooded_lands_oracle.csv)
+
+- [Havens](oracles/havens_oracle.csv)
+
+- [Hinterlands](oracles/hinterlands_oracle.csv)
+
+- [Tempest Hills](oracles/tempest_hills_oracle.csv)
+
+- [Veiled Mountains](oracles/veiled_mountains_oracle.csv)
+
+- [Shattered Wastes](oracles/shattered_wastes_oracle.csv)
 
