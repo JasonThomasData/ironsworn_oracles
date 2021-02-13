@@ -36,7 +36,6 @@ removeFoesIfProbabilityIsTooLow = function(probabilityTable, foeData, toRemoveFr
         }
         probability = rowData
         if(probability < minProb || probability == 0) {
-            print(probabilityColumnName)
             foeData = foeData[foeData[,toRemoveFromFoeData] != probabilityColumnName,]
         }
     }

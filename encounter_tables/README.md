@@ -13,28 +13,12 @@ To install the software and generate your own tables, see [using_script](using_s
 
 Some foes don't appear in certain places, to keep the tables from being cluttered. See [notes](notes.md) for more on this.
 
-### Standard Ironsworn enemy list
+### Encounter tables (standard Ironsworn enemy list)
 
 Roll d100 and add your total experience. If you roll out of table range, roll again.
 
-### Barrier Islands
+- [Barrier Islands](oracles/barrier_islands_oracle.csv)
 
-|Rolls  |Foe           |Type      |Rank       |
-|-------|--------------|----------|-----------|
-|1-9    |Common Folk   |Ironlander|Troublesome|
-|10-26  |Marsh Rat     |Animal    |Troublesome|
-|27-62  |Raider        |Ironlander|Dangerous  |
-|63-65  |Mystic        |Ironlander|Dangerous  |
-|66-68  |Warrior       |Ironlander|Dangerous  |
-|69-71  |Bonewalker    |Horror    |Dangerous  |
-|72-86  |Sodden        |Horror    |Formidable |
-|87-89  |Haunt         |Horror    |Formidable |
-|90-98  |Tawny Wyvern  |Beast     |Extreme    |
-|99-106 |Sea Primordial|Firstborn |Extreme    |
-|107-109|Iron Revenant |Horror    |Extreme    |
-|110-112|Chimera       |Horror    |Extreme    |
-|113-117|Leviathan     |Beast     |Epic       |
-
-### Ragged Coast 
+- [Ragged Coast](oracles/ragged_coast_oracle.csv)
 
 

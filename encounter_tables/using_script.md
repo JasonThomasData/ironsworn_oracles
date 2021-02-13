@@ -12,9 +12,9 @@ I haven't tested on Mac and Windows, so install ```Rscript``` on your computer b
 
 ```./lpSolve_oracle.R -h``` to see the required arguments.
 
-EG:
+See the commands in [generate_tables.sh](generate_tables.sh) for examples of commands to run.
 
-    ./lpSolve_oracle.R --input barrier_islands_foes.csv --region "Barrier Islands" --output barrier_islands_oracle.csv
+The easiest way to use this software is to update the probability tables and foe lists in ```foes/```, and then run ```./generate_tables.sh```
 
 Optional arguments are:
     
