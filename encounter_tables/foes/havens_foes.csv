@@ -1,6 +1,7 @@
 Foe,Type,Rank
 Broken,Ironlander,Troublesome
 Common folk,Ironlander,Troublesome
+Group of Broken,Ironlander,Dangerous
 Raider,Ironlander,Dangerous
 Mystic,Ironlander,Dangerous
 Warrior,Ironlander,Dangerous
@@ -9,7 +10,7 @@ Band of Raiders,Ironlander,Formidable
 Pack of Wolves,Animal,Formidable
 Haunt,Horror,Formidable
 Troll,Firstborn,Formidable
-Throng of Raiders,Ironlander,Extreme
+Large Group of Raiders,Ironlander,Extreme
 River Primordial,Firstborn,Extreme
 Elder Beast,Beast,Extreme
 Chimera,Horror,Extreme

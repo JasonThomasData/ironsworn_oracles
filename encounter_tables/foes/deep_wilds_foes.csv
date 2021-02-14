@@ -1,4 +1,6 @@
 Foe,Type,Rank
+Wounded Hunter,Ironlander,Troublesome
+Maimed Spider,Beast,Troublesome
 Marsh Rat,Animal,Troublesome
 Elf,Firstborn,Dangerous
 Hunter,Ironlander,Dangerous
@@ -9,6 +11,7 @@ Mystic,Ironlander,Dangerous
 Ash Bear,Animal,Formidable
 Warband of Elves,Firstborn,Formidable
 Several Harrow Spiders,Beast,Formidable
+Company of Hunters,Ironlander,Extreme
 Hollow,Horror,Extreme
 Elder Beast,Beast,Extreme
 Forest primordial,Firstborn,Extreme

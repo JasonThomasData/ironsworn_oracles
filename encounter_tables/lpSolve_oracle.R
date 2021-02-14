@@ -24,8 +24,8 @@ getCoefficientsForValueInColumn = function(foeData, nominatedValue, columnName) 
     (coefficients)
 }
 
-getProbabilitiesForThisRegion = function(probababilities, region) {
-    (probababilities[probababilities$Region==region,])
+getProbabilitiesForThisRegion = function(probabilities, region) {
+    (probabilities[probabilities$Region==region,])
 }
 
 removeFoesIfProbabilityIsTooLow = function(probabilityTable, foeData, toRemoveFromFoeData, minProb) {
@@ -69,12 +69,12 @@ addRankConstraints = function(lpModel, foeData, foeRankProbababilitiesForRegion)
 }
 
 
-updateFoeDataWithDiceRolls = function(probababilities, rollScale) {
+updateFoeDataWithDiceRolls = function(probabilities, rollScale) {
     minimumRoll=1
     rolls = c()
     for(probability in probabilities) {
         roll=probability*rollScale
-        roundedRoll=round(roll, digits=0)
+        roundedRoll=floor(roll)
         maxRoll=minimumRoll+roundedRoll
         rollRangeForFoe=sprintf("%i-%i", minimumRoll, maxRoll)
         minimumRoll=maxRoll+1
@@ -117,6 +117,17 @@ getTerminalArgs = function() {
     (argv)
 }
 
+padProbabilities = function(probabilities, totalProbabilities) {
+    desiredTotalProbabilities = 1.0
+    paddedProbabilities = c()
+    probabilityGap = desiredTotalProbabilities - totalProbabilities
+    for(probability in probabilities) {
+        paddedProbability = probability + (probability * probabilityGap)
+        paddedProbabilities = append(paddedProbabilities, paddedProbability)
+    }
+    (paddedProbabilities)
+}
+
 argv = getTerminalArgs()
 region = argv$region
 minProb = argv$minProb
@@ -155,14 +166,18 @@ addConstraintForMinimumFoeProbability(lpModel, numberOfFoes, minProb)
 solve(lpModel)
 
 probabilities=get.variables(lpModel)
-if(sum(probabilities) != 1) {
-    print("These probabilities do not equal 1. This could be optimised further")
-}
-
 writeLines("Probabilities based on ordered list of foes:")
 print(probabilities)
+totalProbabilities = sum(probabilities)
+if(totalProbabilities != 1) {
+    writeLines("These probabilities do not equal 1. This could be optimised further by changing the probability tables and foes list")
+    probabilities = padProbabilities(probabilities, totalProbabilities)
+    writeLines(sprintf("Probabilities adjusted to equal: %f", sum(probabilities)))
+    writeLines("Probabilities since being adjusted:")
+    print(probabilities)
+}
 
-foeData = updateFoeDataWithDiceRolls(probababilities, rollScale)
+foeData = updateFoeDataWithDiceRolls(probabilities, rollScale)
 
 write.csv(foeData, outputFileName, row.names=FALSE)
 
