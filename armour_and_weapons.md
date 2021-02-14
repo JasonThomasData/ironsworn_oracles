@@ -18,7 +18,7 @@ If the score (roll+adjust) is larger than 100, roll again
 
 Roll+Adjust | Probability | Weapon | Type | Use
 --- | --- | --- | --- | ---
-1-3 | 0.3 | Staff | simple | two hands 
+1-30 | 0.3 | Staff | simple | two hands 
 31-40 | 0.1 | Dagger / Knife | simple | one hand
 41-55 | 0.15 | Shield | simple | one hand
 56-70 | 0.15 | Armour | wearable | wearable 
