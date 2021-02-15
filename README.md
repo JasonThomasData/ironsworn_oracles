@@ -4,3 +4,4 @@
 
 - [Encounter tables](encounter_tables/README.md), for deciding which enemy you will face in an ambush, encounter, etc.
 
+- [Quests and journeys](quest_and_journey.md), for deciding the rank of journey or quest to undertake.
