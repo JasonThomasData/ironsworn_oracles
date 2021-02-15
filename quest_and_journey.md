@@ -2,11 +2,11 @@
 
 Roll oracle dice and adjust for the rank of foe/quest etc:
 
-    roll -40 +(2 * exp)
+    roll -40 +exp
 
 If the score is out of table range, roll again 
 
-Roll+Adjust | Probability | Rank | Progress per hit/waypoint
+Roll+Adjust | Probability | Rank | Progress per milestone/waypoint
 --- | --- | --- | ---
 1-15 | 0.15 | Troublesome | 3 progress
 16-40 | 0.25 | Dangerous | 2 progress
