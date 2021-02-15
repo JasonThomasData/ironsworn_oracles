@@ -2,7 +2,7 @@
 
 Roll oracle dice and adjust for the rank of foe/quest etc:
 
-    -40 + (2\* exp)
+    roll -40 +(2 * exp)
 
 If the score is out of table range, roll again 
 
