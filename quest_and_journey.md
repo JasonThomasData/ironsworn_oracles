@@ -1,6 +1,6 @@
 ## Quest and journey rank oracle
 
-Roll oracle dice and adjust for the rank of foe/quest etc:
+Roll oracle dice and adjust for the rank of journey/quest etc:
 
     roll -40 +exp
 
