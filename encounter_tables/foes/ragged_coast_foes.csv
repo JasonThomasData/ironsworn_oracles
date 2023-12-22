@@ -1,8 +1,9 @@
 Foe,Type,Rank
 Broken,Ironlander,Troublesome
 Common folk,Ironlander,Troublesome
-Mystic,Ironlander,Dangerous
+Raider,Ironlander,Dangerous
 Warrior,Ironlander,Dangerous
+Mystic,Ironlander,Dangerous
 Boar,Animal,Dangerous
 Bonewalker,Horror,Dangerous
 Band of Raiders,Ironlander,Formidable

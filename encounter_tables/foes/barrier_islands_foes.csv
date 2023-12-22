@@ -1,9 +1,9 @@
 Foe,Type,Rank
 Marsh Rat,Animal,Troublesome
 Common Folk,Ironlander,Troublesome
-Mystic,Ironlander,Dangerous
-Warrior,Ironlander,Dangerous
 Raider,Ironlander,Dangerous
+Warrior,Ironlander,Dangerous
+Mystic,Ironlander,Dangerous
 Bonewalker,Horror,Dangerous
 Mischief of Marsh Rats,Animal,Dangerous
 Band of Raiders,Ironlander,Formidable
