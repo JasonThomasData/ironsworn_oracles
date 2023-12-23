@@ -89,7 +89,15 @@ addConstraintForMinimumFoeProbability = function(lpModel, numberOfFoes, minProb)
     for(i in 1:numberOfFoes) {
         constraintDummy = rep(0, numberOfFoes)
         constraintDummy[i] = 1
-        add.constraint(lpModel, constraintDummy, ">", minProb)
+        add.constraint(lpModel, constraintDummy, ">=", minProb)
+    }
+}
+
+addConstraintForMaximumFoeProbability = function(lpModel, numberOfFoes, maxProb) {
+    for(i in 1:numberOfFoes) {
+        constraintDummy = rep(0, numberOfFoes)
+        constraintDummy[i] = 1
+        add.constraint(lpModel, constraintDummy, "<=", maxProb)
     }
 }
 
@@ -99,6 +107,7 @@ getTerminalArgs = function() {
     parser = add_argument(parser, "--input", help="The file for foes found within the region", type="character")
     parser = add_argument(parser, "--output", help="The same file, with dice rolls prepended", type="character")
     parser = add_argument(parser, "--minProb", help="The minimum probability that a creature will appear in the output oracle, if it's present in the csv of enemies. Valid between 0,1", default=0.02)
+    parser = add_argument(parser, "--maxProb", help="The maximum probability that a creature will appear in the output oracle, if it's present in the csv of enemies. Valid between 0,1", default=0.1)
     parser = add_argument(parser, "--rollScale", help="The absolute maximum valid roll, which should be above 100, so that a character with no experience should never meet Epic foes.", default=120)
     argv = parse_args(parser)
     regions = c("Barrier Islands", "Ragged Coast", "Deep Wilds", "Flooded Lands", "Havens", "Hinterlands", "Tempest Hills", "Veiled Mountains", "Shattered Wastes")
@@ -107,6 +116,10 @@ getTerminalArgs = function() {
         return (1)
     }
     if(argv$minProb < 0 || argv$minProb > 1) {
+        print(parser)
+        return (1)
+    }
+    if(argv$maxProb < 0 || argv$maxProb > 1) {
         print(parser)
         return (1)
     }
@@ -131,6 +144,7 @@ padProbabilities = function(probabilities, totalProbabilities) {
 argv = getTerminalArgs()
 region = argv$region
 minProb = argv$minProb
+maxProb = argv$minProb
 rollScale = argv$rollScale
 outputFileName = argv$output
 
@@ -162,6 +176,7 @@ addTypeConstraints(lpModel, foeData, foeTypeProbababilitiesForRegion)
 addRankConstraints(lpModel, foeData, foeRankProbababilitiesForRegion)
 
 addConstraintForMinimumFoeProbability(lpModel, numberOfFoes, minProb)
+addConstraintForMaximumFoeProbability(lpModel, numberOfFoes, maxProb)
 
 solve(lpModel)
 
