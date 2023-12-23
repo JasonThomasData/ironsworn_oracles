@@ -144,7 +144,7 @@ padProbabilities = function(probabilities, totalProbabilities) {
 argv = getTerminalArgs()
 region = argv$region
 minProb = argv$minProb
-maxProb = argv$minProb
+maxProb = argv$maxProb
 rollScale = argv$rollScale
 outputFileName = argv$output
 
