@@ -21,7 +21,8 @@ The easiest way to use this software is to update the foe_*_probability.csv tabl
 Optional arguments are:
 
     --minimum_prob = the minimum probability that a creature will appear in the output oracle, if it's present in the csv of enemies
-    --rollScale = the absolute maximum valid roll, which should be above 100, so that a character with no experience should never meet Epic foes
+    --maximum_prob = the maximum probability that a creature will appear in the output oracle, if it's present in the csv of enemies
+    --rollScale = the absolute maximum valid roll, which should be above 100, so that a character with no experience should never meet Epic foes. This score will be lower for regions that are more difficult, like the Shattered wastes, and higher for regions like the Havens.
 
 ### Modify how monsters appear
 
